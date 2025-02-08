@@ -2,7 +2,7 @@
   <span>
     Organizar por
 
-    <span class="text-primary text-bold text-italic cursor-pointer" @click="showMenu = true">
+    <span class="text-primary text-bold text-italic cursor-pointer">
       {{ selectedOption }}
       <q-icon name="expand_more" class="q-mr-sm" />
 
@@ -22,7 +22,6 @@ import { ref } from 'vue'
 
 const menuOptions = ['recommended', 'high_price', 'low_price']
 
-const showMenu = ref(false)
 const selectedOption = ref('recommended')
 
 const selectOption = (option: string) => {
