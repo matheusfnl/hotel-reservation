@@ -1,7 +1,29 @@
 <template>
   <q-card class="bg-white rounded-borders-md row">
     <q-card-section class="image-section q-pa-none col-3 overflow-hidden">
-      <img :src="hotel.thumb" class="full-width full-height fit-image" />
+      <q-carousel
+        v-model="slide"
+        animated
+        infinite
+        :autoplay="5000"
+        arrows
+        height="256px"
+        class="rounded-borders-md no-scroll"
+        navigation-icon="radio_button_unchecked"
+        control-type="regular"
+        control-color="white"
+        control-text-color="grey"
+      >
+        <q-carousel-slide
+          v-for="(image, index) in hotel.images"
+          :key="index"
+          :name="index"
+          class="q-pa-none"
+          style="height: 256px"
+        >
+          <img :src="image" class="full-width full-height fit-image" />
+        </q-carousel-slide>
+      </q-carousel>
     </q-card-section>
 
     <q-card-section class="col-6">
@@ -63,6 +85,7 @@ const { hotel } = defineProps<{
 }>()
 
 const rating = ref(0)
+const slide = ref(0)
 
 const getAmenities = computed(() => {
   const amenities = hotel.amenities ? [...hotel.amenities] : []
@@ -112,11 +135,44 @@ onMounted(() => {
 <style lang="scss" scoped>
 .image-section {
   border-radius: 0.75rem 0 0 0.75rem !important;
-  height: 256px;
 
   .fit-image {
     object-fit: cover;
     object-position: center;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  :deep(.q-carousel) {
+    .q-panel.scroll {
+      overflow: hidden !important;
+    }
+
+    .q-carousel__prev-arrow--horizontal {
+      left: 8px;
+    }
+
+    .q-carousel__next-arrow--horizontal {
+      right: 8px;
+    }
+
+    .q-carousel__arrow {
+      button {
+        width: 18px;
+        height: 18px;
+        min-width: unset;
+        min-height: unset;
+
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 }
 
@@ -130,6 +186,7 @@ onMounted(() => {
 
 .two-lines-truncate {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
