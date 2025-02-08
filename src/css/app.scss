@@ -25,3 +25,11 @@ body {
     box-shadow: none;
   }
 }
+
+.q-menu {
+  box-shadow: 0 2px 2px #e6e8eb;
+
+  .q-item:hover {
+    color: $primary;
+  }
+}

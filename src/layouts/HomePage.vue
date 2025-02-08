@@ -45,12 +45,21 @@
         </div>
       </template>
     </PageHeader>
+
+    <div class="row items-center justify-between q-py-md">
+      <AppBreadcrumb />
+      <SearchResultsOrder />
+    </div>
+
+    <div>resto</div>
   </q-layout>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import PageHeader from '@/components/PageHeader.vue'
+import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
+import SearchResultsOrder from '@/components/SearchResultsOrder.vue'
 
 const stringOptions = ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']
 
