@@ -31,5 +31,7 @@
     "taxes_included": "Impostos inclusos",
     "select": "Selecionar",
     "currency": "R$"
-  }
+  },
+
+  "empty": "Nenhum hotel foi encontrado com o filtro selecionado."
 }

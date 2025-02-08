@@ -13,13 +13,13 @@
 
       <div class="row justify-end">
         <q-btn
-          :loading="searchRequestPending"
+          :loading="requestPending"
           rounded
           no-caps
           color="primary"
           size="md"
           style="width: 180px"
-          @click="searchData"
+          @click="emit('search')"
         >
           {{ $t('hotel.search.button') }}
 
@@ -34,15 +34,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const searchRequestPending = ref(false)
-const searchData = () => {
-  searchRequestPending.value = true
-  setTimeout(() => {
-    searchRequestPending.value = false
-  }, 2000)
-}
-
-defineExpose({ searchData })
+defineProps<{ requestPending: boolean }>()
+const emit = defineEmits<{ search: unknown }>()
 </script>

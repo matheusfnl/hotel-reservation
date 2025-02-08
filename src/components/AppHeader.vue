@@ -5,11 +5,13 @@
     style="max-width: 1600px"
   >
     <h1 class="h1-reset">
-      <img
-        :src="Logo"
-        :alt="$t('shared.logo_alt')"
-        :style="{ width: $q.screen.lt.sm ? '150px' : '200px' }"
-      />
+      <router-link :to="{ name: 'home' }" class="cursor-pointer">
+        <img
+          :src="Logo"
+          :alt="$t('shared.logo_alt')"
+          :style="{ width: $q.screen.lt.sm ? '150px' : '200px' }"
+        />
+      </router-link>
     </h1>
   </div>
 </template>

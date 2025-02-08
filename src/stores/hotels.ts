@@ -5,25 +5,32 @@ import type { HotelsByPlace, Hotel } from '@/types'
 import hotelsMock from '@/mock/hotel.json'
 
 interface FetchHotelsParams {
-  placeId?: number
+  placeId?: number | string
   page?: number
   price?: string
+  name?: string
 }
 
-const allPlaceHotels = hotelsMock as HotelsByPlace[]
+const allPlaceHotels = [...hotelsMock] as HotelsByPlace[]
 
 export const useHotelsStore = defineStore('hotels', {
   state: () => ({ hotels: [] as Hotel[] }),
   actions: {
-    async fetchHotels({ placeId, price, page = 1 }: FetchHotelsParams = {}) {
+    async fetchHotels({ placeId, price, page = 1, name }: FetchHotelsParams = {}) {
       try {
         const filterHotels = (): Hotel[] => {
-          const placeHotels = placeId
-            ? allPlaceHotels.find((hotel) => hotel.placeId === placeId)?.hotels
+          let placeHotels = placeId
+            ? allPlaceHotels.find((hotel) => hotel.placeId === +placeId)?.hotels
             : allPlaceHotels.flatMap((place) => place.hotels)
 
           if (!placeHotels) {
             return []
+          }
+
+          if (name) {
+            placeHotels = placeHotels.filter((hotel) =>
+              hotel.name.toLowerCase().includes(name.toLowerCase()),
+            )
           }
 
           if (price) {

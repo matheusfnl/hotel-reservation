@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     name: 'hotels.place',
-    path: '/hotels/place/:id(\\d+)',
+    path: '/hotels/place/:placeId(\\d+)',
     component: () => import('layouts/HotelsPage.vue'),
   },
   {

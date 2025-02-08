@@ -27,23 +27,18 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+import type { FormattedPlaces } from '@/types'
 
 import { usePlacesStore } from '@/stores/places'
 
-interface Place {
-  name: string
-  state: {
-    name: string
-    shortname: string
-  }
-  placeId: number
-  formattedLabel: string
-}
-
 const placeStore = usePlacesStore()
 
-defineEmits<{
-  'update:modelValue': [value: Place | null]
+const route = useRoute()
+
+const emit = defineEmits<{
+  'update:modelValue': [value: FormattedPlaces | null]
 }>()
 
 defineProps({
@@ -53,8 +48,8 @@ defineProps({
   },
 })
 
-const placeSearch = ref('')
-const filteredPlaces = ref<Place[]>([])
+const placeSearch = ref<FormattedPlaces | null>(null)
+const filteredPlaces = ref<FormattedPlaces[]>([])
 
 const filterPlaces = (val: string, update: (fn: () => void) => void) => {
   const formattedPlaces = placeStore.places.map((place) => ({
@@ -72,7 +67,24 @@ const filterPlaces = (val: string, update: (fn: () => void) => void) => {
   })
 }
 
+const setPlace = (placeId: string | number) => {
+  const formattedPlaces = placeStore.places.map((place) => ({
+    formattedLabel: `${place.name}, ${place.state.shortname}`,
+    ...place,
+  }))
+
+  emit('update:modelValue', formattedPlaces.find((place) => +place.placeId === +placeId) || null)
+}
+
 onMounted(async () => {
   await placeStore.fetchPlaces()
+
+  if (route.params.placeId) {
+    setPlace(route.params.placeId as string)
+  }
+})
+
+defineExpose({
+  setPlace,
 })
 </script>

@@ -23,7 +23,7 @@
               >.
             </p>
 
-            <PlaceSelect v-model="placeSelect" class="q-mb-lg" :dense="false" />
+            <PlaceSelect v-model="placeSearch" class="q-mb-lg" :dense="false" />
 
             <q-btn
               rounded
@@ -31,7 +31,7 @@
               color="primary"
               size="lg"
               style="min-width: 160px"
-              :to="{ name: 'hotels.place', params: { id: placeSelect?.placeId } }"
+              :to="{ name: 'hotels.place', params: { placeId: placeSearch?.placeId } }"
             >
               {{ $t('home.cta.search') }}
             </q-btn>
@@ -44,20 +44,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-
-interface Place {
-  name: string
-  state: {
-    name: string
-    shortname: string
-  }
-  placeId: number
-  formattedLabel: string
-}
+import type { FormattedPlaces } from '@/types'
 
 import PlaceSelect from '@/components/inputs/PlaceSelect.vue'
 
-const placeSelect = ref<Place | null>(null)
+const placeSearch = ref<FormattedPlaces | null>(null)
 </script>
 
 <style lang="scss" scoped>
