@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-white rounded-borders-md">
     <q-card-section class="q-px-md q-py-sm">
-      <h2 class="text-h5 text-weight-medium q-ma-none">{{ $t('home.title') }}</h2>
+      <h2 class="text-h5 q-ma-none">{{ $t('home.title') }}</h2>
     </q-card-section>
 
     <q-separator />
@@ -13,12 +13,11 @@
 
       <div class="row justify-end">
         <q-btn
-          :loading="search_request_pending"
+          :loading="searchRequestPending"
           rounded
           no-caps
           color="primary"
           size="md"
-          class="text-bold"
           style="width: 180px"
           @click="searchData"
         >
@@ -37,19 +36,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const search_request_pending = ref(false)
+const searchRequestPending = ref(false)
 const searchData = () => {
-  search_request_pending.value = true
+  searchRequestPending.value = true
   setTimeout(() => {
-    search_request_pending.value = false
+    searchRequestPending.value = false
   }, 2000)
 }
 
 defineExpose({ searchData })
 </script>
-
-<style scoped>
-.q-btn::before {
-  box-shadow: none !important;
-}
-</style>

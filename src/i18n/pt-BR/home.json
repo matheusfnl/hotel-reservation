@@ -22,5 +22,14 @@
       "high_price": "Maior preço",
       "low_price": "Menor preço"
     }
+  },
+
+  "hotel": {
+    "refundable": "Reembolsável",
+    "from": "A partir de",
+    "per_night": "/noite",
+    "taxes_included": "Impostos inclusos",
+    "select": "Selecionar",
+    "currency": "R$"
   }
 }

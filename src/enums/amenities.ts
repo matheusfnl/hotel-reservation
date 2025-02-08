@@ -14,5 +14,4 @@ export enum Amenities {
   PUB = 'sports_bar',
   AIR_CONDITIONING = 'ac_unit',
   SAFE = 'lock',
-  REFUNDABLE = 'currency_exchange',
 }

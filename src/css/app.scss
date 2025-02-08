@@ -39,3 +39,7 @@ body {
     text-shadow: none;
   }
 }
+
+.q-btn::before {
+  box-shadow: none !important;
+}

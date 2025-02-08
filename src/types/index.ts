@@ -14,6 +14,8 @@ export interface Hotel {
   nonRefundable: boolean | null
   address: {
     fullAddress: string
+    city: string
+    district: string
   }
   images: string[]
   deals: unknown

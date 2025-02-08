@@ -4,7 +4,7 @@
       <template #inputs>
         <div class="row q-col-gutter-x-md">
           <label class="col-6">
-            <span class="text-bold text-grey-6">
+            <span class="text-weight-medium text-grey-7">
               {{ $t('home.search.inputs.destination.label') }}
               <span class="text-red">*</span>
             </span>
@@ -34,7 +34,7 @@
           </label>
 
           <label class="col-6">
-            <span class="text-bold text-grey-6">
+            <span class="text-weight-medium text-grey-7">
               {{ $t('home.search.inputs.hotel.label') }}
             </span>
 
