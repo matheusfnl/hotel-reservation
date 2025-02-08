@@ -6,12 +6,12 @@
     "inputs": {
       "destination": {
         "label": "Destino",
-        "placeholder": "Belo Horizonte, MG",
+        "placeholder": "Cidade, UF",
         "empty": "Sem resultados"
       },
       "hotel": {
         "label": "Nome",
-        "placeholder": "Hotel Primavera"
+        "placeholder": "Hotel..."
       }
     }
   },
