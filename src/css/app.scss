@@ -1,5 +1,27 @@
-// app global css in SCSS form
-
 body {
   background-color: #f2f2f2;
+  color: #505050;
+}
+
+.q-card {
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.q-separator {
+  background-color: black;
+}
+
+.q-field--outlined {
+  .q-field__control {
+    box-shadow: 0 2px 2px #f1f3f5;
+
+    &::before {
+      border-color: #e2e5e7;
+    }
+  }
+
+  &.q-field--focused .q-field__control {
+    box-shadow: none;
+  }
 }
