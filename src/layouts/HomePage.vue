@@ -60,12 +60,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+
 import PageHeader from '@/components/PageHeader.vue'
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
 import SearchResultsOrder from '@/components/SearchResultsOrder.vue'
 
+import { useHotelsStore } from 'src/stores/hotels'
+
 const stringOptions = ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']
+
+const hotelStore = useHotelsStore()
 
 const text = ref('')
 const pageHeader = ref<InstanceType<typeof PageHeader>>()
@@ -89,4 +94,8 @@ const filterFn = (val: string, update: (callbackFn: () => void, afterFn?: () => 
 }
 
 const abortFilterFn = () => {}
+
+onMounted(() => {
+  console.log(hotelStore.fetchHotels({ page: 2 }))
+})
 </script>
