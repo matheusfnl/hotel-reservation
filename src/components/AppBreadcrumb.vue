@@ -14,10 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-interface BreadcrumbItem {
-  label: string
-  options: { [key: string]: string }
-}
+import type { BreadcrumbItem } from '@/types'
 
 defineProps<{
   breadcrumbItems: Array<string | BreadcrumbItem>

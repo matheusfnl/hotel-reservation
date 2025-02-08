@@ -54,9 +54,8 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
 
-import type { FormattedPlaces } from '@/types'
+import type { FormattedPlaces, BreadcrumbItem } from '@/types'
 
 import PageHeader from '@/components/PageHeader.vue'
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
@@ -70,24 +69,15 @@ import { useHotelsStore } from '@/stores/hotels'
 const route = useRoute()
 const router = useRouter()
 const hotelStore = useHotelsStore()
-const { t } = useI18n()
 
 const nameSearch = ref('')
 const placeSearch = ref<FormattedPlaces | null>(null)
 const requestPending = ref(false)
+const destinationLabel = ref<BreadcrumbItem | string>('destination.fallback')
 const searchRequestPending = ref(false)
 
 const getBreadcrumb = computed(() => {
-  return [
-    'home',
-    'hotels',
-    {
-      label: 'destination',
-      options: {
-        local: placeSearch.value?.name ? `${t('routes.utils.at')} ${placeSearch.value?.name}` : '',
-      },
-    },
-  ]
+  return ['home', 'hotels', destinationLabel.value]
 })
 
 const fetchHotels = async () => {
@@ -103,13 +93,35 @@ const fetchHotels = async () => {
 const handleSearch = async () => {
   await router.push({
     name: 'hotels.place',
-    params: { placeId: route.params.placeId },
+    params: { placeId: placeSearch.value?.placeId },
     query: { name: nameSearch.value },
   })
 
   searchRequestPending.value = true
   await fetchHotels()
   searchRequestPending.value = false
+  destinationLabel.value = setDestinationBreadcrumb()
+}
+
+const setDestinationBreadcrumb = (): BreadcrumbItem | string => {
+  if (nameSearch.value && placeSearch.value?.name) {
+    return {
+      label: 'destination.name',
+      options: {
+        local: placeSearch.value?.name,
+        name: nameSearch.value,
+      },
+    }
+  }
+
+  if (placeSearch.value?.name) {
+    return {
+      label: 'destination.default',
+      options: { local: placeSearch.value?.name },
+    }
+  }
+
+  return 'destination.fallback'
 }
 
 onMounted(async () => {
@@ -118,6 +130,7 @@ onMounted(async () => {
   }
 
   await fetchHotels()
+  destinationLabel.value = setDestinationBreadcrumb()
 })
 </script>
 

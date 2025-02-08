@@ -31,6 +31,10 @@ export const useHotelsStore = defineStore('hotels', {
             placeHotels = placeHotels.filter((hotel) =>
               hotel.name.toLowerCase().includes(name.toLowerCase()),
             )
+
+            console.log(
+              placeHotels.filter((hotel) => hotel.name.toLowerCase().includes(name.toLowerCase())),
+            )
           }
 
           if (price) {

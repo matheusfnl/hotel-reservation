@@ -49,3 +49,8 @@ export interface PlaceState {
   name: string
   shortname: string
 }
+
+export interface BreadcrumbItem {
+  label: string
+  options: { [key: string]: string }
+}

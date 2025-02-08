@@ -1,8 +1,9 @@
 {
-  "utils": {
-    "at": "em"
-  },
   "home": "Início",
   "hotels": "Hotéis",
-  "destination": "Hospedagem {local}"
+  "destination": {
+    "default": "Hospedagem em {local}",
+    "name": "\"{name}\" em {local}",
+    "fallback": "Hospedagem"
+  }
 }
