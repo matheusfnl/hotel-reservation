@@ -5,7 +5,7 @@
         v-model="slide"
         animated
         infinite
-        :autoplay="5000"
+        :autoplay="10000"
         arrows
         height="256px"
         class="rounded-borders-md no-scroll"
@@ -21,7 +21,14 @@
           class="q-pa-none"
           style="height: 256px"
         >
-          <img :src="image" class="full-width full-height fit-image" />
+          <q-img
+            :src="image"
+            spinner-color="primary"
+            fit="cover"
+            height="256px"
+            class="full-width"
+            no-native-menu
+          />
         </q-carousel-slide>
       </q-carousel>
     </q-card-section>
