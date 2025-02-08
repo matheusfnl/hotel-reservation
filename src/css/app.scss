@@ -33,3 +33,9 @@ body {
     color: $primary;
   }
 }
+
+.q-rating {
+  .q-icon {
+    text-shadow: none;
+  }
+}

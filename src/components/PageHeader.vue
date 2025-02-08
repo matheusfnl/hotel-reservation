@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-white rounded-borders-md">
-    <q-card-section>
-      <h2 class="text-h4 text-weight-regular q-ma-none">{{ $t('home.title') }}</h2>
+    <q-card-section class="q-px-md q-py-sm">
+      <h2 class="text-h5 text-weight-medium q-ma-none">{{ $t('home.title') }}</h2>
     </q-card-section>
 
     <q-separator />
@@ -17,8 +17,9 @@
           rounded
           no-caps
           color="primary"
-          size="lg"
-          style="width: 210px"
+          size="md"
+          class="text-bold"
+          style="width: 180px"
           @click="searchData"
         >
           {{ $t('home.search.button') }}

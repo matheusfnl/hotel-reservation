@@ -4,7 +4,7 @@
       <template #inputs>
         <div class="row q-col-gutter-x-md">
           <label class="col-6">
-            <span class="text-h8 text-bold text-grey-6">
+            <span class="text-bold text-grey-6">
               {{ $t('home.search.inputs.destination.label') }}
               <span class="text-red">*</span>
             </span>
@@ -34,7 +34,7 @@
           </label>
 
           <label class="col-6">
-            <span class="text-h8 text-bold text-grey-6">
+            <span class="text-bold text-grey-6">
               {{ $t('home.search.inputs.hotel.label') }}
             </span>
 
@@ -55,7 +55,13 @@
       <SearchResultsOrder />
     </div>
 
-    <div>resto</div>
+    <div class="row q-col-gutter-y-md">
+      <template v-if="hotelStore.hotels.length">
+        <div v-for="hotel in hotelStore.hotels" class="col-12" :key="hotel.id">
+          <HotelCard :hotel="hotel" />
+        </div>
+      </template>
+    </div>
   </q-layout>
 </template>
 
@@ -65,6 +71,7 @@ import { onMounted, ref } from 'vue'
 import PageHeader from '@/components/PageHeader.vue'
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
 import SearchResultsOrder from '@/components/SearchResultsOrder.vue'
+import HotelCard from '@/components/hotel/HotelCard.vue'
 
 import { useHotelsStore } from 'src/stores/hotels'
 
@@ -95,7 +102,23 @@ const filterFn = (val: string, update: (callbackFn: () => void, afterFn?: () => 
 
 const abortFilterFn = () => {}
 
-onMounted(() => {
-  console.log(hotelStore.fetchHotels({ page: 2 }))
+interface Amenity {
+  key: string
+  label: string
+}
+
+onMounted(async () => {
+  await hotelStore.fetchHotels()
+
+  console.log(
+    hotelStore.hotels
+      .flatMap((hotel) => hotel.amenities)
+      .reduce((acc: Amenity[], current) => {
+        if (current && !acc.some((item) => item.key === current.key)) {
+          acc.push(current)
+        }
+        return acc
+      }, [] as Amenity[]),
+  )
 })
 </script>
