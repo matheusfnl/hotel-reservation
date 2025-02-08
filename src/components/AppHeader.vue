@@ -5,7 +5,11 @@
     style="max-width: 1600px"
   >
     <h1 class="h1-reset">
-      <img :src="Logo" alt="Onfly Logo" :style="{ width: $q.screen.lt.sm ? '150px' : '200px' }" />
+      <img
+        :src="Logo"
+        :alt="$t('shared.logo_alt')"
+        :style="{ width: $q.screen.lt.sm ? '150px' : '200px' }"
+      />
     </h1>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-white rounded-borders-md">
     <q-card-section>
-      <h2 class="text-h4 text-weight-regular q-ma-none">Reservar hotel</h2>
+      <h2 class="text-h4 text-weight-regular q-ma-none">{{ $t('home.title') }}</h2>
     </q-card-section>
 
     <q-separator />
@@ -21,10 +21,11 @@
           style="width: 210px"
           @click="searchData"
         >
-          Alterar busca
+          {{ $t('home.search.button') }}
+
           <template v-slot:loading>
             <q-spinner-hourglass class="on-left" />
-            Buscando...
+            {{ $t('home.search.request_pending') }}
           </template>
         </q-btn>
       </div>

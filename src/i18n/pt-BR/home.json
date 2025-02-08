@@ -1,0 +1,26 @@
+{
+  "title": "Reservar hotel",
+  "search": {
+    "button": "Alterar busca",
+    "request_pending": "Buscando...",
+    "inputs": {
+      "destination": {
+        "label": "Destino",
+        "placeholder": "Belo Horizonte, MG",
+        "empty": "Sem resultados"
+      },
+      "hotel": {
+        "label": "Nome",
+        "placeholder": "Hotel Primavera"
+      }
+    }
+  },
+  "filters": {
+    "by": "Organizar por",
+    "options": {
+      "recommended": "Recomendados",
+      "high_price": "Maior preço",
+      "low_price": "Menor preço"
+    }
+  }
+}

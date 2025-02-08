@@ -5,7 +5,7 @@
         <div class="row q-col-gutter-x-md">
           <label class="col-6">
             <span class="text-h8 text-bold text-grey-6">
-              Destino
+              {{ $t('home.search.inputs.destination.label') }}
               <span class="text-red">*</span>
             </span>
 
@@ -18,27 +18,31 @@
               dense
               dropdown-icon=""
               input-debounce="0"
-              placeholder="Belo Horizonte, MG"
+              :placeholder="$t('home.search.inputs.destination.placeholder')"
               :options="options"
               @filter="filterFn"
               @filter-abort="abortFilterFn"
             >
               <template v-slot:no-option>
                 <q-item>
-                  <q-item-section class="text-grey"> Sem resultados </q-item-section>
+                  <q-item-section class="text-grey">
+                    {{ $t('home.search.inputs.destination.empty') }}
+                  </q-item-section>
                 </q-item>
               </template>
             </q-select>
           </label>
 
           <label class="col-6">
-            <span class="text-h8 text-bold text-grey-6"> Nome </span>
+            <span class="text-h8 text-bold text-grey-6">
+              {{ $t('home.search.inputs.hotel.label') }}
+            </span>
 
             <q-input
               outlined
               v-model="text"
               dense
-              placeholder="Hotel Primavera"
+              :placeholder="$t('home.search.inputs.hotel.placeholder')"
               @keydown.enter="handleSearch"
             />
           </label>
