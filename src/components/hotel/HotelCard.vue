@@ -15,35 +15,16 @@
 
         <q-separator vertical color="grey" />
 
-        <q-icon name="wifi" />
-
-        <q-icon name="restaurant" />
-
-        <q-icon name="room_service" />
-
-        <q-icon name="meeting_room" />
-
-        <q-icon name="local_laundry_service" />
-
-        <q-icon name="bakery_dining" />
-
-        <q-icon name="local_parking" />
-
-        <q-icon name="fitness_center" />
-
-        <q-icon name="pool" />
-
-        <q-icon name="spa" />
-
-        <q-icon name="hot_tub" />
-
-        <q-icon name="pets" />
-
-        <q-icon name="sports_bar" />
-
-        <q-icon name="ac_unit" />
-
-        <q-icon name="lock" />
+        <q-icon
+          v-for="amenity in getAmenities"
+          :key="amenity.key"
+          :name="Amenities[amenity.key]"
+          size="xs"
+        >
+          <q-tooltip class="bg-primary text-bold">
+            {{ amenity.label }}
+          </q-tooltip>
+        </q-icon>
       </div>
 
       <q-chip color="grey" text-color="white" class="text-bold" square>Reembolsável</q-chip>
@@ -57,16 +38,36 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import type { Hotel } from '@/types'
-import AMENTIES from '@/constants/amenties'
+import { Amenities } from '@/enums/amenities'
 
 const rating = ref(4.8)
 
-defineProps<{
+const { hotel } = defineProps<{
   hotel: Hotel
 }>()
+
+const getAmenities = computed(() => {
+  const amenities = hotel.amenities ? [...hotel.amenities] : []
+
+  if (hotel.hasBreakFast && !amenities.find((amenity) => amenity.key === 'BREAKFAST')) {
+    amenities.push({
+      key: 'BREAKFAST',
+      label: 'Café da manhã',
+    })
+  }
+
+  if (hotel.hasRefundableRoom && !hotel.nonRefundable) {
+    amenities.push({
+      key: 'REFUNDABLE',
+      label: 'Reembolsável',
+    })
+  }
+
+  return amenities
+})
 </script>
 
 <style lang="scss" scoped>

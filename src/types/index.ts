@@ -1,3 +1,5 @@
+import type { Amenities as AmenitiesKey } from '@/enums/amenities'
+
 export interface Hotel {
   id: number
   favorite: boolean
@@ -20,7 +22,7 @@ export interface Hotel {
 }
 
 export interface Amenities {
-  key: string
+  key: keyof typeof AmenitiesKey
   label: string
 }
 
