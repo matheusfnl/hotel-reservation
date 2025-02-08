@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-white rounded-borders-md">
     <q-card-section class="q-px-md q-py-sm">
-      <h2 class="text-h5 q-ma-none">{{ $t('home.title') }}</h2>
+      <h2 class="text-h5 q-ma-none">{{ $t('hotel.title') }}</h2>
     </q-card-section>
 
     <q-separator />
@@ -21,11 +21,11 @@
           style="width: 180px"
           @click="searchData"
         >
-          {{ $t('home.search.button') }}
+          {{ $t('hotel.search.button') }}
 
           <template v-slot:loading>
             <q-spinner-hourglass class="on-left" />
-            {{ $t('home.search.request_pending') }}
+            {{ $t('hotel.search.request_pending') }}
           </template>
         </q-btn>
       </div>

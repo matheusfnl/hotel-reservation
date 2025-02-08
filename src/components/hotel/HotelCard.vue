@@ -50,22 +50,22 @@
       </div>
 
       <q-chip v-if="isRefundable" color="grey" text-color="white" class="text-weight-medium" square>
-        {{ $t('home.hotel.refundable') }}
+        {{ $t('hotel.hotel.refundable') }}
       </q-chip>
     </q-card-section>
 
     <q-card-section class="col-3 relative-position">
       <q-separator vertical color="grey-3" class="position-left" spaced />
-      <p class="q-mb-xs text-grey-6 text-caption">{{ $t('home.hotel.from') }}:</p>
+      <p class="q-mb-xs text-grey-6 text-caption">{{ $t('hotel.hotel.from') }}:</p>
       <p class="q-mb-xs">
-        {{ $t('home.hotel.currency') }}<span class="text-h5">{{ getFullPrice }}</span>
+        {{ $t('hotel.hotel.currency') }}<span class="text-h5">{{ getFullPrice }}</span>
       </p>
 
       <p class="q-mb-none text-grey-6 text-caption">{{ getPerNightText }}</p>
-      <p class="text-grey-7 q-mb-xl text-caption">{{ $t('home.hotel.taxes_included') }}</p>
+      <p class="text-grey-7 q-mb-xl text-caption">{{ $t('hotel.hotel.taxes_included') }}</p>
 
       <q-btn rounded no-caps color="primary" size="md" style="width: 140px">
-        {{ $t('home.hotel.select') }}
+        {{ $t('hotel.hotel.select') }}
       </q-btn>
     </q-card-section>
   </q-card>
@@ -124,7 +124,7 @@ const getFullPrice = computed(() => {
 const getPerNightText = computed(() => {
   const value = hotel.price / 3
 
-  return `${t('home.hotel.currency')}${formatValue(value)}${t('home.hotel.per_night')}`
+  return `${t('hotel.hotel.currency')}${formatValue(value)}${t('hotel.hotel.per_night')}`
 })
 
 onMounted(() => {

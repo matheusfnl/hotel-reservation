@@ -1,15 +1,15 @@
 <template>
   <span>
-    {{ $t('home.filters.by') }}
+    {{ $t('hotel.filters.by') }}
 
     <span class="text-primary text-bold text-italic cursor-pointer">
-      {{ $t(`home.filters.options.${selectedOption}`) }}
+      {{ $t(`hotel.filters.options.${selectedOption}`) }}
       <q-icon name="expand_more" class="q-mr-sm" />
 
       <q-menu>
         <q-list style="min-width: 200px" v-for="item in menuOptions" :key="item">
           <q-item dense clickable v-close-popup @click="selectOption(item)">
-            <q-item-section>{{ $t(`home.filters.options.${item}`) }}</q-item-section>
+            <q-item-section>{{ $t(`hotel.filters.options.${item}`) }}</q-item-section>
           </q-item>
         </q-list>
       </q-menu>

@@ -1,0 +1,35 @@
+{
+  "title": "Reservar hotel",
+  "search": {
+    "button": "Alterar busca",
+    "request_pending": "Buscando...",
+    "inputs": {
+      "destination": {
+        "label": "Destino",
+        "placeholder": "Cidade, UF",
+        "empty": "Sem resultados"
+      },
+      "hotel": {
+        "label": "Nome",
+        "placeholder": "Hotel..."
+      }
+    }
+  },
+  "filters": {
+    "by": "Organizar por",
+    "options": {
+      "recommended": "Recomendados",
+      "high_price": "Maior preço",
+      "low_price": "Menor preço"
+    }
+  },
+
+  "hotel": {
+    "refundable": "Reembolsável",
+    "from": "A partir de",
+    "per_night": "/noite",
+    "taxes_included": "Impostos inclusos",
+    "select": "Selecionar",
+    "currency": "R$"
+  }
+}
