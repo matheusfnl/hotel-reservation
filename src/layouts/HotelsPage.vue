@@ -32,7 +32,7 @@
 
     <div class="row items-center justify-between q-py-md">
       <AppBreadcrumb :breadcrumb-items="getBreadcrumb" />
-      <SearchResultsOrder />
+      <SearchResultsOrder v-model="hotelSort" />
     </div>
 
     <div class="row q-col-gutter-y-md">
@@ -71,6 +71,7 @@ const router = useRouter()
 const hotelStore = useHotelsStore()
 
 const nameSearch = ref('')
+const hotelSort = ref('recommended')
 const placeSearch = ref<FormattedPlaces | null>(null)
 const requestPending = ref(false)
 const destinationLabel = ref<BreadcrumbItem | string>('destination.fallback')
@@ -85,16 +86,27 @@ const fetchHotels = async () => {
   await hotelStore.fetchHotels({
     placeId: route.params.placeId as string,
     name: nameSearch.value,
+    sort: hotelSort.value,
   })
 
   requestPending.value = false
 }
 
 const handleSearch = async () => {
+  const query = {} as { name: string; sort: string }
+
+  if (nameSearch.value) {
+    query.name = nameSearch.value
+  }
+
+  if (hotelSort.value !== 'recommended') {
+    query.sort = hotelSort.value
+  }
+
   await router.push({
     name: 'hotels.place',
     params: { placeId: placeSearch.value?.placeId },
-    query: { name: nameSearch.value },
+    query,
   })
 
   searchRequestPending.value = true
@@ -127,6 +139,10 @@ const setDestinationBreadcrumb = (): BreadcrumbItem | string => {
 onMounted(async () => {
   if (route.query.name) {
     nameSearch.value = route.query.name as string
+  }
+
+  if (route.query.sort) {
+    hotelSort.value = route.query.sort as string
   }
 
   await fetchHotels()

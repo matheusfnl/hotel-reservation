@@ -3,13 +3,23 @@
     {{ $t('hotel.filters.by') }}
 
     <span class="text-primary text-bold text-italic cursor-pointer">
-      {{ $t(`hotel.filters.options.${selectedOption}`) }}
+      {{ $t(`hotel.filters.options.${modelValue}`) }}
       <q-icon name="expand_more" class="q-mr-sm" />
 
       <q-menu>
-        <q-list style="min-width: 200px" v-for="item in menuOptions" :key="item">
-          <q-item dense clickable v-close-popup @click="selectOption(item)">
-            <q-item-section>{{ $t(`hotel.filters.options.${item}`) }}</q-item-section>
+        <q-list style="min-width: 200px">
+          <q-item
+            v-for="item in menuOptions"
+            :key="item"
+            dense
+            clickable
+            v-close-popup
+            @click="selectOption(item)"
+            :active="modelValue === item"
+          >
+            <q-item-section>
+              {{ $t(`hotel.filters.options.${item}`) }}
+            </q-item-section>
           </q-item>
         </q-list>
       </q-menu>
@@ -18,19 +28,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+interface Props {
+  modelValue: string
+}
 
-const menuOptions = ['recommended', 'high_price', 'low_price']
+defineProps<Props>()
+const emit = defineEmits<{
+  'update:modelValue': [value: string]
+}>()
 
-const selectedOption = ref('recommended')
+const menuOptions = ['recommended', 'best_rated', 'high_price', 'low_price']
 
 const selectOption = (option: string) => {
-  selectedOption.value = option
+  emit('update:modelValue', option)
 }
 </script>
-
-<style scoped>
-.inline-select :deep(.q-btn) {
-  color: #1976d2;
-}
-</style>

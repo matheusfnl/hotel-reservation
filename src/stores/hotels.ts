@@ -7,8 +7,8 @@ import hotelsMock from '@/mock/hotel.json'
 interface FetchHotelsParams {
   placeId?: number | string
   page?: number
-  price?: string
   name?: string
+  sort?: string
 }
 
 const allPlaceHotels = [...hotelsMock] as HotelsByPlace[]
@@ -16,7 +16,7 @@ const allPlaceHotels = [...hotelsMock] as HotelsByPlace[]
 export const useHotelsStore = defineStore('hotels', {
   state: () => ({ hotels: [] as Hotel[] }),
   actions: {
-    async fetchHotels({ placeId, price, page = 1, name }: FetchHotelsParams = {}) {
+    async fetchHotels({ placeId, page = 1, name, sort }: FetchHotelsParams = {}) {
       try {
         const filterHotels = (): Hotel[] => {
           let placeHotels = placeId
@@ -31,19 +31,21 @@ export const useHotelsStore = defineStore('hotels', {
             placeHotels = placeHotels.filter((hotel) =>
               hotel.name.toLowerCase().includes(name.toLowerCase()),
             )
-
-            console.log(
-              placeHotels.filter((hotel) => hotel.name.toLowerCase().includes(name.toLowerCase())),
-            )
           }
 
-          if (price) {
-            return price === 'asc'
+          if (['high_price', 'low_price'].includes(sort as string)) {
+            return sort === 'low_price'
               ? placeHotels?.sort((a, b) => +a.price - +b.price)
               : placeHotels?.sort((a, b) => +b.price - +a.price)
           }
 
-          return placeHotels?.sort((a, b) => +b.stars - +a.stars)
+          if (sort === 'best_rated') {
+            return placeHotels?.sort((a, b) => +b.stars - +a.stars)
+          }
+
+          return placeHotels?.sort((a, b) =>
+            a.favorite !== b.favorite ? +b.favorite - +a.favorite : +b.stars - +a.stars,
+          )
         }
 
         await new Promise((resolve) => setTimeout(resolve, 2000))
