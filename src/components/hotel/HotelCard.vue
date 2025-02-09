@@ -15,7 +15,7 @@
         control-text-color="grey"
       >
         <q-carousel-slide
-          v-for="(image, index) in getHotelImages"
+          v-for="(image, index) in hotel.images"
           :key="index"
           :name="index"
           class="q-pa-none"
@@ -116,18 +116,6 @@ const getHotelLocation = computed(() => {
   const { city, district, street } = hotel.address
 
   return `${city}, ${district}, ${street}.`
-})
-
-const getHotelImages = computed(() => {
-  const thumb = hotel.thumb
-  const images = [...hotel.images]
-
-  const thumbIndex = images.indexOf(thumb)
-  if (thumbIndex > -1) {
-    images.splice(thumbIndex, 1)
-  }
-
-  return [thumb, ...images]
 })
 
 const formatValue = (value: number) => {
