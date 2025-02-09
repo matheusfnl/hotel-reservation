@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchResultsOrder > should render correctly with initial value 1`] = `"<span>Organizar por <span class="text-primary text-bold text-italic cursor-pointer">Recomendados <i class="q-icon notranslate material-icons q-mr-sm" aria-hidden="true" role="presentation">expand_more</i><!----></span></span>"`;

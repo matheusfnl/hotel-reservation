@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppHeader > render header 1`] = `
+"<div data-v-48a13218="" class="row items-center q-mx-auto q-pa-xs" style="justify-content: start; max-width: 1600px;">
+  <h1 data-v-48a13218="" class="h1-reset">
+    <router-link data-v-48a13218="" to="[object Object]" class="cursor-pointer"><img data-v-48a13218="" src="/src/assets/main-logo.svg" alt="Onfly Logo" style="width: 200px;"></router-link>
+  </h1>
+</div>"
+`;
+
+exports[`AppHeader > should render header 1`] = `
+"<div data-v-48a13218="" class="row items-center q-mx-auto q-pa-xs" style="justify-content: start; max-width: 1600px;">
+  <h1 data-v-48a13218="" class="h1-reset">
+    <router-link data-v-48a13218="" to="[object Object]" class="cursor-pointer"><img data-v-48a13218="" src="/src/assets/main-logo.svg" alt="Onfly Logo" style="width: 200px;"></router-link>
+  </h1>
+</div>"
+`;

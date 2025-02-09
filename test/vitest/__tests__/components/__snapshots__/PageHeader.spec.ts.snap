@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PageHeader > should render correctly 1`] = `
+"<div class="q-card bg-white rounded-borders-md">
+  <div class="q-card__section q-card__section--vert q-px-md q-py-sm">
+    <h2 class="text-h5 q-ma-none">Reservar hotel</h2>
+  </div>
+  <hr class="q-separator q-separator--horizontal" aria-orientation="horizontal">
+  <div class="q-card__section q-card__section--vert column q-gutter-md">
+    <!--v-if-->
+    <div class="row justify-end"><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--rounded bg-primary text-white q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase col-12 col-sm-auto" style="font-size: 14px; min-width: 180px;" tabindex="0" type="button"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row">Search </span>
+        <transition-stub name="q-transition--fade" appear="false" persisted="false" css="true">
+          <!---->
+        </transition-stub>
+      </button></div>
+  </div>
+</div>"
+`;

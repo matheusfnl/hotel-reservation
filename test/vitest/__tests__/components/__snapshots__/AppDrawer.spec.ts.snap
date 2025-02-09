@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppDrawer > should closes drawer on drawer-close event 1`] = `
+"<transition-stub data-v-99ee5784="" name="fade" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<div data-v-99ee5784="" class="q-drawer-container">
+  <aside class="q-drawer q-drawer--right q-drawer--bordered q-layout--prevent-focus q-drawer--standard fixed q-drawer--on-top" style="width: 900px; transform: translateX(900px);">
+    <div class="q-drawer__content fit scroll drawer-custom">
+      <!---->
+    </div>
+  </aside>
+</div>"
+`;
+
+exports[`AppDrawer > should opens drawer on drawer-open event 1`] = `
+"<transition-stub data-v-99ee5784="" name="fade" appear="false" persisted="false" css="true">
+  <div data-v-99ee5784="" class="background"></div>
+</transition-stub>
+<div data-v-99ee5784="" class="q-drawer-container">
+  <aside class="q-drawer q-drawer--right q-drawer--bordered q-drawer--standard fixed q-drawer--on-top" style="width: 900px; transform: translateX(0px);">
+    <div class="q-drawer__content fit scroll drawer-custom">
+      <div data-v-99ee5784="" class="mock-component">Mock Component</div>
+    </div>
+  </aside>
+</div>"
+`;
+
+exports[`AppDrawer > should render drawer with default state 1`] = `
+"<transition-stub data-v-99ee5784="" name="fade" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<div data-v-99ee5784="" class="q-drawer-container">
+  <aside class="q-drawer q-drawer--right q-drawer--bordered q-layout--prevent-focus q-drawer--standard fixed q-drawer--on-top" style="width: 900px; transform: translateX(900px);">
+    <div class="q-drawer__content fit scroll drawer-custom">
+      <!---->
+    </div>
+  </aside>
+</div>"
+`;

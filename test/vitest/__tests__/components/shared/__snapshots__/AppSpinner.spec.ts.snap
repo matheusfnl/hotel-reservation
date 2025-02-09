@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppSpinner > should render correctly 1`] = `"<span data-v-6df88b7b="" class="pulse-animation full-width flex justify-center"><i data-v-6df88b7b="" class="q-icon notranslate material-icons" aria-hidden="true" role="presentation">hotel</i></span>"`;
