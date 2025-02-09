@@ -80,7 +80,7 @@
     <q-separator />
   </q-card-section>
 
-  <q-card-section>
+  <q-card-section v-if="hotel.getDescription">
     <p class="text-h5">{{ $t('hotel.drawer.description.title') }}</p>
 
     <p class="text-grey-6">
