@@ -42,18 +42,20 @@
 
         <q-rating v-model="rating" readonly size="18px" :max="5" color="yellow" />
 
-        <q-separator vertical color="grey" />
+        <template v-if="getAmenities.length">
+          <q-separator vertical color="grey" />
 
-        <q-icon
-          v-for="amenity in getAmenities"
-          :key="amenity.key"
-          :name="Amenities[amenity.key]"
-          size="xs"
-        >
-          <q-tooltip class="bg-primary text-bold">
-            {{ amenity.label }}
-          </q-tooltip>
-        </q-icon>
+          <q-icon
+            v-for="amenity in getAmenities"
+            :key="amenity.key"
+            :name="Amenities[amenity.key]"
+            size="xs"
+          >
+            <q-tooltip class="bg-primary text-bold">
+              {{ amenity.label }}
+            </q-tooltip>
+          </q-icon>
+        </template>
       </div>
 
       <q-chip v-if="isRefundable" color="grey" text-color="white" class="text-weight-medium" square>
@@ -96,7 +98,8 @@ const rating = ref(0)
 const slide = ref(0)
 
 const getAmenities = computed(() => {
-  const amenities = hotel.amenities ? [...hotel.amenities] : []
+  let amenities = hotel.amenities ? [...hotel.amenities] : []
+  amenities = amenities.filter((amenity) => !Array.isArray(amenity))
 
   if (hotel.hasBreakFast && !amenities.find((amenity) => amenity.key === 'BREAKFAST')) {
     amenities.push({

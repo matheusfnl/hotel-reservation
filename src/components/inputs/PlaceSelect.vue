@@ -6,7 +6,6 @@
     fill-input
     outlined
     :dense="dense"
-    clearable
     hide-dropdown-icon
     input-debounce="0"
     :placeholder="$t('hotel.search.inputs.destination.placeholder')"
