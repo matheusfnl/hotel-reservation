@@ -15,7 +15,7 @@
         control-text-color="grey"
       >
         <q-carousel-slide
-          v-for="(image, index) in hotel.images"
+          v-for="(image, index) in getHotelImages"
           :key="index"
           :name="index"
           class="q-pa-none"
@@ -113,9 +113,21 @@ const isRefundable = computed(() => {
 })
 
 const getHotelLocation = computed(() => {
-  const { city, district } = hotel.address
+  const { city, district, street } = hotel.address
 
-  return `${city}, ${district}. A 2,97km do centro`
+  return `${city}, ${district}, ${street}.`
+})
+
+const getHotelImages = computed(() => {
+  const thumb = hotel.thumb
+  const images = [...hotel.images]
+
+  const thumbIndex = images.indexOf(thumb)
+  if (thumbIndex > -1) {
+    images.splice(thumbIndex, 1)
+  }
+
+  return [thumb, ...images]
 })
 
 const formatValue = (value: number) => {

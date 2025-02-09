@@ -16,6 +16,7 @@ export interface Hotel {
     fullAddress: string
     city: string
     district: string
+    street: string
   }
   images: string[]
   deals: unknown
