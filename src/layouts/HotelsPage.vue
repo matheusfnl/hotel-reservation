@@ -7,7 +7,7 @@
     >
       <template #inputs>
         <div class="row q-col-gutter-x-md">
-          <label class="col-6">
+          <label class="col-12 col-sm-6">
             <span class="text-weight-medium text-grey-7">
               {{ $t('hotel.search.inputs.destination.label') }}
               <span class="text-red">*</span>
@@ -16,7 +16,7 @@
             <PlaceSelect v-model="placeSearch" />
           </label>
 
-          <label class="col-6">
+          <label class="col-12 col-sm-6">
             <span class="text-weight-medium text-grey-7">
               {{ $t('hotel.search.inputs.hotel.label') }}
             </span>

@@ -12,6 +12,7 @@
     :options="filteredPlaces"
     option-label="formattedLabel"
     option-value="placeId"
+    class="place-select"
     selected-item-label="selectedLabel"
     @filter="filterPlaces"
     @update:model-value="setPlace(placeSearch?.placeId)"
@@ -97,3 +98,11 @@ defineExpose({
   setPlace,
 })
 </script>
+
+<style lang="scss" scoped>
+.place-select {
+  :deep(input) {
+    width: inherit;
+  }
+}
+</style>

@@ -18,7 +18,8 @@
           no-caps
           color="primary"
           size="md"
-          style="width: 180px"
+          class="col-12 col-sm-auto search-button"
+          style="min-width: 180px"
           @click="emit('search')"
         >
           {{ searchLabel }}
