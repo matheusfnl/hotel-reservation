@@ -1,6 +1,6 @@
 <template>
   <q-card class="bg-white rounded-borders-md row">
-    <q-card-section class="image-section q-pa-none col-3 overflow-hidden">
+    <q-card-section class="image-section q-pa-none col-12 col-sm-3 overflow-hidden">
       <q-carousel
         v-model="slide"
         animated
@@ -33,7 +33,7 @@
       </q-carousel>
     </q-card-section>
 
-    <q-card-section class="col-6">
+    <q-card-section class="col-12 col-sm-5 col-md-6">
       <p
         class="text-h5 q-mb-none cursor-pointer clickable-title two-lines-truncate"
         @click="showHotelDetails"
@@ -74,8 +74,8 @@
       </q-chip>
     </q-card-section>
 
-    <q-card-section class="col-3 relative-position">
-      <q-separator vertical color="grey-3" class="position-left" spaced />
+    <q-card-section class="col-12 col-sm-4 col-md-3 relative-position">
+      <q-separator v-if="!$q.screen.lt.sm" vertical color="grey-3" class="position-left" spaced />
       <p class="q-mb-xs text-grey-6 text-caption">{{ $t('hotel.hotel.from') }}:</p>
       <p class="q-mb-xs">
         {{ $t('hotel.hotel.currency') }}<span class="text-h5">{{ hotel.getFullPrice }}</span>
@@ -84,16 +84,19 @@
       <p class="q-mb-none text-grey-6 text-caption">{{ hotel.getPerNightText }}</p>
       <p class="text-grey-7 q-mb-xl text-caption">{{ $t('hotel.hotel.taxes_included') }}</p>
 
-      <q-btn
-        rounded
-        no-caps
-        color="primary"
-        size="md"
-        style="width: 140px"
-        @click="showHotelDetails"
-      >
-        {{ $t('hotel.hotel.select') }}
-      </q-btn>
+      <siv class="row">
+        <q-btn
+          rounded
+          no-caps
+          color="primary"
+          size="md"
+          class="col-12 col-sm-auto"
+          style="min-width: 140px"
+          @click="showHotelDetails"
+        >
+          {{ $t('hotel.hotel.select') }}
+        </q-btn>
+      </siv>
     </q-card-section>
   </q-card>
 </template>
@@ -193,6 +196,20 @@ onMounted(() => {
 
   &:hover {
     color: $primary;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-section {
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+  }
+
+  .two-lines-truncate {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 </style>

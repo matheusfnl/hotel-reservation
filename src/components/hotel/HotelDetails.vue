@@ -203,4 +203,28 @@ onMounted(() => {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 600px) {
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 444px) {
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    justify-content: space-between;
+  }
+}
 </style>

@@ -18,7 +18,7 @@
           no-caps
           color="primary"
           size="md"
-          class="col-12 col-sm-auto search-button"
+          class="col-12 col-sm-auto"
           style="min-width: 180px"
           @click="emit('search')"
         >
