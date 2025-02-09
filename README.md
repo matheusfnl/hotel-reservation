@@ -1,40 +1,26 @@
-# Hotel Reservation (hotel-reservation)
+# Hotel Reservation
 
-A Quasar Project
+## 1. Instale o Node.js e o npm
 
-## Install the dependencies
+Caso não tenha o Node.js e/ou o npm instalados, acesse [https://nodejs.org/en](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) e siga o passo a passo.
+
+## 2. Clone o repositório
 ```bash
-yarn
-# or
+git clone git@github.com:matheusfnl/hotel-reservation.git
+# ou
+git clone https://github.com/matheusfnl/hotel-reservation.git
+```
+
+## 3. Instale as dependências
+```bash
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### 4. Inicie o aplicativo em modo de desenvolvimento
 ```bash
-quasar dev
+npx quasar dev
 ```
 
+### 4. Acesse a aplicação
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Por padrão, a aplicação será inicializada em http://localhost:9000/.
