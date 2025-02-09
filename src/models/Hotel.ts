@@ -27,6 +27,8 @@ export class Hotel {
     city: string
     district: string
     street: string
+    state: string
+    zipCode: string | null
   }
   private images: string[]
   private deals: unknown
@@ -60,6 +62,10 @@ export class Hotel {
     return this.name
   }
 
+  public get getDescription(): string {
+    return this.description
+  }
+
   public get getImages(): string[] {
     return this.images
   }
@@ -68,6 +74,12 @@ export class Hotel {
     const { city, district, street } = this.address
 
     return `${city}, ${district}, ${street}.`
+  }
+
+  public get getFullHotelLocation(): string {
+    const { fullAddress, city, state, zipCode } = this.address
+
+    return `${fullAddress}, ${city} - ${state}${zipCode ? `, ${zipCode}` : ''}`
   }
 
   public get getRating(): string {

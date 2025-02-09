@@ -17,6 +17,8 @@ export interface Hotel {
     city: string
     district: string
     street: string
+    state: string
+    zipCode: string | null
   }
   images: string[]
   deals: unknown
@@ -48,4 +50,19 @@ export interface PlaceState {
 export interface BreadcrumbItem {
   label: string
   options: { [key: string]: string }
+}
+
+export interface DrawerState {
+  component: object | null
+  props: object | null
+}
+
+export interface DrawerPlugin {
+  close(): void
+  open(object: DrawerState): void
+}
+
+export type DrawerEventType = {
+  'drawer-open': DrawerState
+  'drawer-close': boolean
 }

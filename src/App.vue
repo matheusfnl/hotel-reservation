@@ -4,6 +4,8 @@
       <Header />
     </q-header>
 
+    <Drawer />
+
     <q-page-container>
       <div class="page-container">
         <router-view />
@@ -14,6 +16,7 @@
 
 <script setup lang="ts">
 import Header from '@/components/AppHeader.vue'
+import Drawer from '@/components/AppDrawer.vue'
 </script>
 
 <style lang="scss" scoped>

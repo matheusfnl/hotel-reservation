@@ -40,5 +40,18 @@
   "empty": {
     "no_data": "Nenhum hotel foi encontrado com o filtro selecionado.",
     "end_list": "Todos os hotéis foram listados"
+  },
+
+  "drawer": {
+    "facilities": {
+      "title": "Facilidades do hotel"
+    },
+    "button": {
+      "more": "Mostrar todas as facilidades",
+      "less": "Mostrar menos facilidades"
+    },
+    "description": {
+      "title": "Conheça um pouco mais"
+    }
   }
 }

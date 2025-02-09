@@ -79,7 +79,14 @@
       <p class="q-mb-none text-grey-6 text-caption">{{ hotel.getPerNightText }}</p>
       <p class="text-grey-7 q-mb-xl text-caption">{{ $t('hotel.hotel.taxes_included') }}</p>
 
-      <q-btn rounded no-caps color="primary" size="md" style="width: 140px">
+      <q-btn
+        rounded
+        no-caps
+        color="primary"
+        size="md"
+        style="width: 140px"
+        @click="showHotelDetails"
+      >
         {{ $t('hotel.hotel.select') }}
       </q-btn>
     </q-card-section>
@@ -87,9 +94,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 
+import type { DrawerPlugin } from '@/types'
 import type { Hotel } from '@/models/Hotel'
+
+import HotelDetails from '@/components/hotel/HotelDetails.vue'
 
 import { Amenities } from '@/enums/amenities'
 
@@ -97,8 +107,16 @@ const { hotel } = defineProps<{
   hotel: Hotel
 }>()
 
+const drawer = inject('drawer') as DrawerPlugin
 const rating = ref(0)
 const slide = ref(0)
+
+const showHotelDetails = () => {
+  drawer.open({
+    component: HotelDetails,
+    props: { hotel },
+  })
+}
 
 onMounted(() => {
   rating.value = +hotel.getRating
