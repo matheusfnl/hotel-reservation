@@ -2,7 +2,7 @@ import { createI18n } from 'vue-i18n'
 import messages from '@/i18n'
 
 import type { Amenities, Hotel as HotelInterface } from '@/types'
-import { formatValue } from '@/helpers/number-to-valeu'
+import { formatValue } from '@/helpers/number-to-value'
 
 const i18n = createI18n({
   locale: 'pt-BR',
