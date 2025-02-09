@@ -30,7 +30,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import type { FormattedPlaces } from '@/types'
+import type { Places } from '@/types'
 
 import { usePlacesStore } from '@/stores/places'
 
@@ -39,7 +39,7 @@ const placeStore = usePlacesStore()
 const route = useRoute()
 
 const emit = defineEmits<{
-  'update:modelValue': [value: FormattedPlaces | null]
+  'update:modelValue': [value: Places | null]
 }>()
 
 defineProps({
@@ -49,8 +49,8 @@ defineProps({
   },
 })
 
-const placeSearch = ref<FormattedPlaces | null>(null)
-const filteredPlaces = ref<FormattedPlaces[]>([])
+const placeSearch = ref<Places | null>(null)
+const filteredPlaces = ref<Places[]>([])
 
 const filterPlaces = (val: string, update: (fn: () => void) => void) => {
   const formattedPlaces = placeStore.places.map((place) => ({

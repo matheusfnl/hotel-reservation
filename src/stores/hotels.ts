@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
-import type { HotelsByPlace, Hotel } from '@/types'
+import { Hotel } from '@/models/Hotel'
+import type { HotelsByPlace, Hotel as HotelInterface } from '@/types'
 
 import hotelsMock from '@/mock/hotel.json'
 
@@ -18,7 +19,7 @@ export const useHotelsStore = defineStore('hotels', {
   actions: {
     async fetchHotels({ placeId, page = 1, name, sort }: FetchHotelsParams = {}) {
       try {
-        const filterHotels = (): Hotel[] => {
+        const filterHotels = (): HotelInterface[] => {
           let placeHotels = placeId
             ? allPlaceHotels.find((hotel) => hotel.placeId === +placeId)?.hotels
             : allPlaceHotels.flatMap((place) => place.hotels)
@@ -52,7 +53,9 @@ export const useHotelsStore = defineStore('hotels', {
 
         const placeHotels = filterHotels()
         const itemsIndex = (page - 1) * 10
-        const newHotels = placeHotels ? placeHotels.slice(itemsIndex, itemsIndex + 10) : []
+        const newHotels = placeHotels
+          ? placeHotels.slice(itemsIndex, itemsIndex + 10).map((hotel) => new Hotel(hotel))
+          : []
 
         if (page === 1) {
           this.hotels = newHotels

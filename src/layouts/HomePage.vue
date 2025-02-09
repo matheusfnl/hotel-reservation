@@ -44,11 +44,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { FormattedPlaces } from '@/types'
+import type { Places } from '@/types'
 
 import PlaceSelect from '@/components/inputs/PlaceSelect.vue'
 
-const placeSearch = ref<FormattedPlaces | null>(null)
+const placeSearch = ref<Places | null>(null)
 </script>
 
 <style lang="scss" scoped>

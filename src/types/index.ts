@@ -40,12 +40,6 @@ export interface Places {
   placeId: number
 }
 
-export interface FormattedPlaces {
-  name: string
-  state: PlaceState
-  placeId: number
-}
-
 export interface PlaceState {
   name: string
   shortname: string

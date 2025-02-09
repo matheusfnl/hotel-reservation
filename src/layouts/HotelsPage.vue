@@ -41,8 +41,8 @@
 
     <div class="row q-col-gutter-y-md">
       <template v-if="(hotelStore.hotels.length && !requestPending) || pageRequestPending">
-        <div v-for="hotel in hotelStore.hotels" class="col-12" :key="hotel.id">
-          <HotelCard :hotel="hotel" />
+        <div v-for="hotel in hotelStore.hotels" class="col-12" :key="hotel.getId">
+          <HotelCard :hotel="hotel as Hotel" />
         </div>
 
         <div v-if="hasNextPage" class="list-end" v-observe-visibility="fetchNextPage" />
@@ -68,7 +68,8 @@ import { onMounted, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
-import type { FormattedPlaces, BreadcrumbItem } from '@/types'
+import type { Places, BreadcrumbItem } from '@/types'
+import type { Hotel } from '@/models/Hotel'
 
 import PageHeader from '@/components/PageHeader.vue'
 import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
@@ -86,7 +87,7 @@ const hotelStore = useHotelsStore()
 
 const nameSearch = ref('')
 const hotelSort = ref('recommended')
-const placeSearch = ref<FormattedPlaces | null>(null)
+const placeSearch = ref<Places | null>(null)
 const destinationLabel = ref<BreadcrumbItem | string>('destination.fallback')
 const requestPending = ref(false)
 const searchRequestPending = ref(false)
