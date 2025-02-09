@@ -1,38 +1,60 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <PageHeader
-      :request-pending="searchRequestPending"
-      :search-label="getSearchLabel"
-      @search="handleSearch"
-    >
-      <template #inputs>
-        <div class="row q-col-gutter-x-md">
-          <label class="col-12 col-sm-6">
-            <span class="text-weight-medium text-grey-7">
-              {{ $t('hotel.search.inputs.destination.label') }}
-              <span class="text-red">*</span>
-            </span>
+    <Form v-slot="{ meta }">
+      <PageHeader
+        :request-pending="searchRequestPending"
+        :search-label="getSearchLabel"
+        :disabled="!meta.valid"
+        @search="handleSearch"
+      >
+        <template #inputs>
+          <div class="row q-col-gutter-x-md">
+            <label class="col-12 col-sm-6">
+              <span class="text-weight-medium text-grey-7">
+                {{ $t('hotel.search.inputs.destination.label') }}
+                <span class="text-red">*</span>
+              </span>
 
-            <PlaceSelect v-model="placeSearch" />
-          </label>
+              <Field
+                v-slot="{ field, errorMessage, meta }"
+                name="place"
+                :value="placeSearch"
+                rules="placeSelected"
+              >
+                <PlaceSelect
+                  :model-value="placeSearch"
+                  @update:model-value="(val) => handlePlaceUpdate(val, field)"
+                  @blur="field.onBlur"
+                />
 
-          <label class="col-12 col-sm-6">
-            <span class="text-weight-medium text-grey-7">
-              {{ $t('hotel.search.inputs.hotel.label') }}
-            </span>
+                <span v-if="errorMessage && meta.touched" class="text-negative text-caption">
+                  {{
+                    $t('validation.required', {
+                      field: $t('hotel.search.inputs.destination.label').toLowerCase(),
+                    })
+                  }}
+                </span>
+              </Field>
+            </label>
 
-            <q-input
-              outlined
-              v-model="nameSearch"
-              dense
-              clearable
-              :placeholder="$t('hotel.search.inputs.hotel.placeholder')"
-              @keydown.enter="handleSearch"
-            />
-          </label>
-        </div>
-      </template>
-    </PageHeader>
+            <label class="col-12 col-sm-6">
+              <span class="text-weight-medium text-grey-7">
+                {{ $t('hotel.search.inputs.hotel.label') }}
+              </span>
+
+              <q-input
+                outlined
+                v-model="nameSearch"
+                dense
+                clearable
+                :placeholder="$t('hotel.search.inputs.hotel.placeholder')"
+                @keydown.enter="handleSearch"
+              />
+            </label>
+          </div>
+        </template>
+      </PageHeader>
+    </Form>
 
     <div class="row items-center justify-between q-py-md" style="row-gap: 16px">
       <AppBreadcrumb :breadcrumb-items="getBreadcrumb" />
@@ -67,6 +89,8 @@
 import { onMounted, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import type { FieldBindingObject } from 'vee-validate'
+import { Form, Field, defineRule } from 'vee-validate'
 
 import type { Places, BreadcrumbItem } from '@/types'
 import type { Hotel } from '@/models/Hotel'
@@ -179,6 +203,16 @@ const setDestinationBreadcrumb = (): BreadcrumbItem | string => {
   return 'destination.fallback'
 }
 
+const handlePlaceUpdate = (val: Places | null, field: FieldBindingObject) => {
+  placeSearch.value = val
+  field.onChange(val)
+}
+
+const validatePlace = (value: Places | null) => {
+  return !!value?.placeId
+}
+
+defineRule('placeSelected', validatePlace)
 onMounted(async () => {
   if (route.query.name) {
     nameSearch.value = route.query.name as string

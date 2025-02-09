@@ -5,7 +5,7 @@
     <div class="circle-3" />
 
     <div class="absolute-center full-width q-pa-md flex justify-center">
-      <form style="width: fit-content">
+      <Form v-slot="{ meta }" style="width: fit-content">
         <q-card class="bg-white rounded-borders-xl">
           <q-card-section class="q-pa-xl text-center">
             <h2 class="text-h3 text-primary text-weight-medium q-ma-none q-mb-lg">
@@ -23,21 +23,44 @@
               >.
             </p>
 
-            <PlaceSelect v-model="placeSearch" class="q-mb-lg" :dense="false" />
+            <Field
+              v-slot="{ field, errorMessage, meta }"
+              name="place"
+              :value="placeSearch"
+              rules="placeSelected"
+            >
+              <div>
+                <PlaceSelect
+                  :model-value="placeSearch"
+                  @update:model-value="(val) => handlePlaceUpdate(val, field)"
+                  @blur="field.onBlur"
+                />
+
+                <span v-if="errorMessage && meta.touched" class="text-negative text-caption">
+                  {{
+                    $t('validation.required', {
+                      field: $t('hotel.search.inputs.destination.label').toLowerCase(),
+                    })
+                  }}
+                </span>
+              </div>
+            </Field>
 
             <q-btn
               rounded
               no-caps
               color="primary"
               size="lg"
+              class="q-mt-lg"
+              :disabled="!meta.valid"
               style="min-width: 160px"
-              :to="{ name: 'hotels.place', params: { placeId: placeSearch?.placeId } }"
+              @click.prevent="navigateToHotels"
             >
               {{ $t('home.cta.search') }}
             </q-btn>
           </q-card-section>
         </q-card>
-      </form>
+      </Form>
     </div>
   </div>
 </template>
@@ -45,10 +68,34 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { Places } from '@/types'
+import { Form, Field, defineRule } from 'vee-validate'
+import type { FieldBindingObject } from 'vee-validate'
+import { useRouter } from 'vue-router'
 
 import PlaceSelect from '@/components/inputs/PlaceSelect.vue'
 
+const router = useRouter()
+
 const placeSearch = ref<Places | null>(null)
+const handlePlaceUpdate = (val: Places | null, field: FieldBindingObject) => {
+  placeSearch.value = val
+  field.onChange(val)
+}
+
+const navigateToHotels = async () => {
+  if (placeSearch.value?.placeId) {
+    await router.push({
+      name: 'hotels.place',
+      params: { placeId: placeSearch.value.placeId },
+    })
+  }
+}
+
+const validatePlace = (value: Places | null) => {
+  return !!value?.placeId
+}
+
+defineRule('placeSelected', validatePlace)
 </script>
 
 <style lang="scss" scoped>

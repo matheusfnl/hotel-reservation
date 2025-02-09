@@ -18,6 +18,7 @@
           no-caps
           color="primary"
           size="md"
+          :disabled="disabled"
           class="col-12 col-sm-auto"
           style="min-width: 180px"
           @click="emit('search')"
@@ -38,6 +39,7 @@
 defineProps<{
   requestPending: boolean
   searchLabel: string
+  disabled: boolean
 }>()
 
 const emit = defineEmits<{ search: unknown }>()

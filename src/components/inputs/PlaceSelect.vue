@@ -15,6 +15,7 @@
     class="place-select"
     selected-item-label="selectedLabel"
     @filter="filterPlaces"
+    @blur="emit('blur', $event)"
     @update:model-value="setPlace(placeSearch?.placeId)"
   >
     <template v-slot:no-option>
@@ -41,6 +42,7 @@ const route = useRoute()
 
 const emit = defineEmits<{
   'update:modelValue': [value: Places | null]
+  blur: [event: Event]
 }>()
 
 defineProps({
