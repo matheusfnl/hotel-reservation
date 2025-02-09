@@ -37,7 +37,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
-const menuOptions = ['recommended', 'best_rated', 'high_price', 'low_price']
+const menuOptions = ['recommended', 'best_rated']
 
 const selectOption = (option: string) => {
   emit('update:modelValue', option)

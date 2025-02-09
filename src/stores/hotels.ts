@@ -34,19 +34,11 @@ export const useHotelsStore = defineStore('hotels', {
             )
           }
 
-          if (['high_price', 'low_price'].includes(sort as string)) {
-            return sort === 'low_price'
-              ? placeHotels?.sort((a, b) => +a.price - +b.price)
-              : placeHotels?.sort((a, b) => +b.price - +a.price)
-          }
-
           if (sort === 'best_rated') {
             return placeHotels?.sort((a, b) => +b.stars - +a.stars)
           }
 
-          return placeHotels?.sort((a, b) =>
-            a.favorite !== b.favorite ? +b.favorite - +a.favorite : +b.stars - +a.stars,
-          )
+          return placeHotels?.sort((a, b) => +b.price - +a.price)
         }
 
         await new Promise((resolve) => setTimeout(resolve, 2000))

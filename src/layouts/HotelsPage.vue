@@ -183,7 +183,7 @@ onMounted(async () => {
     nameSearch.value = route.query.name as string
   }
 
-  if (route.query.sort) {
+  if (route.query.sort && ['recommended', 'best_rated'].includes(route.query.sort as string)) {
     hotelSort.value = route.query.sort as string
   }
 

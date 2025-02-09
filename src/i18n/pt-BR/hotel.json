@@ -22,8 +22,6 @@
     "by": "Organizar por",
     "options": {
       "recommended": "Recomendados",
-      "high_price": "Maior preço",
-      "low_price": "Menor preço",
       "best_rated": "Melhores avalidados"
     }
   },
