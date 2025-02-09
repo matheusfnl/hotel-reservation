@@ -12,8 +12,10 @@
     :placeholder="$t('hotel.search.inputs.destination.placeholder')"
     :options="filteredPlaces"
     option-label="formattedLabel"
+    option-value="placeId"
+    selected-item-label="selectedLabel"
     @filter="filterPlaces"
-    @update:model-value="$emit('update:modelValue', $event)"
+    @update:model-value="setPlace(placeSearch?.placeId)"
   >
     <template v-slot:no-option>
       <q-item>
@@ -53,7 +55,7 @@ const filteredPlaces = ref<FormattedPlaces[]>([])
 
 const filterPlaces = (val: string, update: (fn: () => void) => void) => {
   const formattedPlaces = placeStore.places.map((place) => ({
-    formattedLabel: `${place.name}, ${place.state.shortname}`,
+    formattedLabel: `${place.name}, ${place.state.name}`,
     ...place,
   }))
 
@@ -67,13 +69,21 @@ const filterPlaces = (val: string, update: (fn: () => void) => void) => {
   })
 }
 
-const setPlace = (placeId: string | number) => {
+const setPlace = (placeId: string | number | undefined) => {
   const formattedPlaces = placeStore.places.map((place) => ({
-    formattedLabel: `${place.name}, ${place.state.shortname}`,
+    formattedLabel: `${place.name}, ${place.state.name}`,
     ...place,
   }))
 
-  emit('update:modelValue', formattedPlaces.find((place) => +place.placeId === +placeId) || null)
+  if (placeId) {
+    const place = formattedPlaces.find((place) => +place.placeId === +placeId)
+
+    if (place) {
+      place.formattedLabel = `${place.name}, ${place.state.shortname}`
+    }
+
+    emit('update:modelValue', place || null)
+  }
 }
 
 onMounted(async () => {

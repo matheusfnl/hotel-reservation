@@ -1,7 +1,10 @@
 {
   "title": "Reservar hotel",
   "search": {
-    "button": "Alterar busca",
+    "button": {
+      "default": "Buscar",
+      "filter": "Alterar busca"
+    },
     "request_pending": "Buscando...",
     "inputs": {
       "destination": {
@@ -34,5 +37,8 @@
     "currency": "R$"
   },
 
-  "empty": "Nenhum hotel foi encontrado com o filtro selecionado."
+  "empty": {
+    "no_data": "Nenhum hotel foi encontrado com o filtro selecionado.",
+    "end_list": "Todos os hotéis foram listados"
+  }
 }

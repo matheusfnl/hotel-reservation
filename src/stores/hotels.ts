@@ -52,8 +52,14 @@ export const useHotelsStore = defineStore('hotels', {
 
         const placeHotels = filterHotels()
         const itemsIndex = (page - 1) * 10
+        const newHotels = placeHotels ? placeHotels.slice(itemsIndex, itemsIndex + 10) : []
 
-        this.hotels = placeHotels ? placeHotels.slice(itemsIndex, itemsIndex + 10) : []
+        if (page === 1) {
+          this.hotels = newHotels
+          return
+        }
+
+        this.hotels = [...this.hotels, ...newHotels]
       } catch (error: unknown) {
         return error
       }

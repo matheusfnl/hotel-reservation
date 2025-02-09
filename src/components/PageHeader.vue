@@ -21,7 +21,7 @@
           style="width: 180px"
           @click="emit('search')"
         >
-          {{ $t('hotel.search.button') }}
+          {{ searchLabel }}
 
           <template v-slot:loading>
             <q-spinner-hourglass class="on-left" />
@@ -34,6 +34,10 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{ requestPending: boolean }>()
+defineProps<{
+  requestPending: boolean
+  searchLabel: string
+}>()
+
 const emit = defineEmits<{ search: unknown }>()
 </script>

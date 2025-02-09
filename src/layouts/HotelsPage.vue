@@ -1,6 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <PageHeader :request-pending="searchRequestPending" @search="handleSearch">
+    <PageHeader
+      :request-pending="searchRequestPending"
+      :search-label="getSearchLabel"
+      @search="handleSearch"
+    >
       <template #inputs>
         <div class="row q-col-gutter-x-md">
           <label class="col-6">
@@ -36,17 +40,25 @@
     </div>
 
     <div class="row q-col-gutter-y-md">
-      <AppSpinner v-if="requestPending" size="md" color="primary" />
-
-      <template v-else-if="hotelStore.hotels.length">
+      <template v-if="(hotelStore.hotels.length && !requestPending) || pageRequestPending">
         <div v-for="hotel in hotelStore.hotels" class="col-12" :key="hotel.id">
           <HotelCard :hotel="hotel" />
         </div>
+
+        <div v-if="hasNextPage" class="list-end" v-observe-visibility="fetchNextPage" />
+        <span v-else class="full-width flex justify-center text-grey-6 empty-feedback q-ma-none">
+          {{ $t('hotel.empty.end_list') }}
+        </span>
       </template>
 
-      <span v-else class="full-width flex justify-center text-grey-6 empty-feedback q-ma-none">
-        {{ $t('hotel.empty') }}
+      <span
+        v-else-if="!requestPending"
+        class="full-width flex justify-center text-grey-6 empty-feedback q-ma-none"
+      >
+        {{ $t('hotel.empty.no_data') }}
       </span>
+
+      <AppSpinner v-if="requestPending || pageRequestPending" size="md" color="primary" />
     </div>
   </q-layout>
 </template>
@@ -54,6 +66,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import type { FormattedPlaces, BreadcrumbItem } from '@/types'
 
@@ -66,6 +79,7 @@ import AppSpinner from '@/components/shared/AppSpinner.vue'
 
 import { useHotelsStore } from '@/stores/hotels'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const hotelStore = useHotelsStore()
@@ -73,12 +87,27 @@ const hotelStore = useHotelsStore()
 const nameSearch = ref('')
 const hotelSort = ref('recommended')
 const placeSearch = ref<FormattedPlaces | null>(null)
-const requestPending = ref(false)
 const destinationLabel = ref<BreadcrumbItem | string>('destination.fallback')
+const requestPending = ref(false)
 const searchRequestPending = ref(false)
+const pageRequestPending = ref(false)
+const filterApplied = ref(false)
+const page = ref(1)
+
+const getSearchLabel = computed(() => {
+  if (route.query.name || route.query.sort || filterApplied.value) {
+    return t('hotel.search.button.filter')
+  }
+
+  return t('hotel.search.button.default')
+})
 
 const getBreadcrumb = computed(() => {
   return ['home', 'hotels', destinationLabel.value]
+})
+
+const hasNextPage = computed(() => {
+  return hotelStore.hotels.length % 10 === 0
 })
 
 const fetchHotels = async () => {
@@ -87,9 +116,19 @@ const fetchHotels = async () => {
     placeId: route.params.placeId as string,
     name: nameSearch.value,
     sort: hotelSort.value,
+    page: page.value,
   })
 
   requestPending.value = false
+}
+
+const fetchNextPage = async (visible: boolean) => {
+  if (visible && !pageRequestPending.value) {
+    page.value++
+    pageRequestPending.value = true
+    await fetchHotels()
+    pageRequestPending.value = false
+  }
 }
 
 const handleSearch = async () => {
@@ -109,6 +148,8 @@ const handleSearch = async () => {
     query,
   })
 
+  page.value = 1
+  filterApplied.value = true
   searchRequestPending.value = true
   await fetchHotels()
   searchRequestPending.value = false
