@@ -1,25 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`AppBreadcrumb > render breadcrumb with complex routes 1`] = `
-"<div class="q-breadcrumbs text-brown">
-  <div class="flex items-center justify-start q-gutter-sm">
-    <div class="flex items-center text-primary"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Início</span></div>
-    <div class="q-breadcrumbs__separator"><i class="q-icon text-primary notranslate material-icons" style="font-size: 1.5em;" aria-hidden="true" role="presentation">chevron_right</i></div>
-    <div class="flex items-center q-breadcrumbs--last"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">"Hotel" em BH</span></div>
-  </div>
-</div>"
-`;
-
-exports[`AppBreadcrumb > render breadcrumb with simple routes 1`] = `
-"<div class="q-breadcrumbs text-brown">
-  <div class="flex items-center justify-start q-gutter-sm">
-    <div class="flex items-center text-primary"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Início</span></div>
-    <div class="q-breadcrumbs__separator"><i class="q-icon text-primary notranslate material-icons" style="font-size: 1.5em;" aria-hidden="true" role="presentation">chevron_right</i></div>
-    <div class="flex items-center q-breadcrumbs--last"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Hotéis</span></div>
-  </div>
-</div>"
-`;
-
 exports[`AppBreadcrumb > should render breadcrumb with complex routes 1`] = `
 "<div class="q-breadcrumbs text-brown">
   <div class="flex items-center justify-start q-gutter-sm">

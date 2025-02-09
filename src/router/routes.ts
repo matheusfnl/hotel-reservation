@@ -4,12 +4,12 @@ const routes: RouteRecordRaw[] = [
   {
     name: 'home',
     path: '/',
-    component: () => import('layouts/HomePage.vue'),
+    component: () => import('pages/HomeView.vue'),
   },
   {
     name: 'hotels.place',
     path: '/hotels/place/:placeId(\\d+)',
-    component: () => import('layouts/HotelsPage.vue'),
+    component: () => import('pages/HotelsView.vue'),
   },
   {
     path: '/:catchAll(.*)*',

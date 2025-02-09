@@ -1,0 +1,122 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HotelsView > should render correctly 1`] = `
+"<div data-v-7ea6272d="" class="q-layout q-layout--standard" style="min-height: 768px;" tabindex="-1">
+  <!---->
+  <!---->
+  <form data-v-7ea6272d="" novalidate="">
+    <div data-v-7ea6272d="" class="q-card bg-white rounded-borders-md">
+      <div class="q-card__section q-card__section--vert q-px-md q-py-sm">
+        <h2 class="text-h5 q-ma-none">Reservar hotel</h2>
+      </div>
+      <hr class="q-separator q-separator--horizontal" aria-orientation="horizontal">
+      <div class="q-card__section q-card__section--vert column q-gutter-md">
+        <div>
+          <div data-v-7ea6272d="" class="row q-col-gutter-x-md"><label data-v-7ea6272d="" class="col-12 col-sm-6"><span data-v-7ea6272d="" class="text-weight-medium text-grey-7">Destino <span data-v-7ea6272d="" class="text-red">*</span></span><label data-v-cf369733="" data-v-7ea6272d="" class="q-field row no-wrap items-start q-field--outlined q-select q-field--auto-height q-select--with-input q-select--without-chips q-select--single q-field--dense place-select" for="static-for">
+                <!---->
+                <div class="q-field__inner relative-position col self-stretch">
+                  <div class="q-field__control relative-position row no-wrap" tabindex="-1">
+                    <div class="q-field__control-container col relative-position row no-wrap q-anchor--skip">
+                      <div class="q-field__native row items-center"><input class="q-field__input q-placeholder col" type="search" tabindex="0" role="combobox" aria-readonly="false" aria-autocomplete="list" aria-expanded="false" aria-controls="static-aria-controls" placeholder="Cidade, UF" selected-item-label="selectedLabel" id="static-id" value=""></div>
+                      <!---->
+                    </div>
+                    <!---->
+                    <!---->
+                  </div>
+                  <!---->
+                </div>
+                <!---->
+              </label>
+              <!--v-if-->
+            </label><label data-v-7ea6272d="" class="col-12 col-sm-6"><span data-v-7ea6272d="" class="text-weight-medium text-grey-7">Nome</span><label data-v-7ea6272d="" class="q-field row no-wrap items-start q-field--outlined q-input q-field--dense" for="static-for">
+                <!---->
+                <div class="q-field__inner relative-position col self-stretch">
+                  <div class="q-field__control relative-position row no-wrap" tabindex="-1">
+                    <div class="q-field__control-container col relative-position row no-wrap q-anchor--skip"><input class="q-field__native q-placeholder" tabindex="0" placeholder="Hotel..." id="static-id" type="text" value="">
+                      <!---->
+                    </div>
+                  </div>
+                  <!---->
+                </div>
+                <!---->
+              </label></label></div>
+        </div>
+        <div class="row justify-end"><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--rounded bg-primary text-white q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase col-12 col-sm-auto" style="font-size: 14px; min-width: 180px;" tabindex="0" type="button"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row">Buscar </span>
+            <transition-stub name="q-transition--fade" appear="false" persisted="false" css="true">
+              <!---->
+            </transition-stub>
+          </button></div>
+      </div>
+    </div>
+  </form>
+  <div data-v-7ea6272d="" class="row items-center justify-between q-py-md" style="row-gap: 16px;">
+    <div data-v-7ea6272d="" class="q-breadcrumbs text-brown">
+      <div class="flex items-center justify-start q-gutter-sm">
+        <div class="flex items-center text-primary"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Início</span></div>
+        <div class="q-breadcrumbs__separator"><i class="q-icon text-primary notranslate material-icons" style="font-size: 1.5em;" aria-hidden="true" role="presentation">chevron_right</i></div>
+        <div class="flex items-center text-primary"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Hotéis</span></div>
+        <div class="q-breadcrumbs__separator"><i class="q-icon text-primary notranslate material-icons" style="font-size: 1.5em;" aria-hidden="true" role="presentation">chevron_right</i></div>
+        <div class="flex items-center q-breadcrumbs--last"><span class="q-breadcrumbs__el q-link flex inline items-center relative-position q-link--focusable">Hospedagem</span></div>
+      </div>
+    </div><span data-v-7ea6272d="">Organizar por <span class="text-primary text-bold text-italic cursor-pointer">Recomendados <i class="q-icon notranslate material-icons q-mr-sm" aria-hidden="true" role="presentation">expand_more</i><!----></span></span>
+  </div>
+  <div data-v-7ea6272d="" class="row q-col-gutter-y-md">
+    <div data-v-7ea6272d="" class="col-12">
+      <div data-v-be666f43="" data-v-7ea6272d="" class="q-card bg-white rounded-borders-md row">
+        <div data-v-be666f43="" class="q-card__section q-card__section--vert image-section q-pa-none col-12 col-sm-3 overflow-hidden">
+          <div data-v-be666f43="" class="q-carousel q-panel-parent q-carousel--without-padding q-carousel--arrows-horizontal rounded-borders-md no-scroll" style="height: 256px;">
+            <div class="q-carousel__slides-container">
+              <transition-stub appear="false" persisted="false" css="true">
+                <div class="q-panel scroll" style="--q-transition-duration: 300ms;" role="tabpanel">
+                  <div data-v-be666f43="" class="q-carousel__slide q-pa-none" style="height: 256px;">
+                    <div data-v-be666f43="" class="q-img q-img--no-menu full-width" style="height: 256px;" role="img">
+                      <div style="padding-bottom: 56.24929688378895%;"></div>
+                      <div class="q-img__container absolute-full"><img class="q-img__image q-img__image--with-transition q-img__image--current" style="object-fit: cover; object-position: 50% 50%;" height="256px" loading="lazy" fetchpriority="auto" aria-hidden="true" draggable="false" src="image1.jpg"></div>
+                      <transition-stub name="q-transition--fade" appear="false" persisted="false" css="true">
+                        <div class="q-img__loading absolute-full flex flex-center"><svg class="q-spinner text-primary q-spinner-mat" width="1em" height="1em" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="5" stroke-miterlimit="10"></circle>
+                          </svg></div>
+                      </transition-stub>
+                    </div>
+                  </div>
+                </div>
+              </transition-stub>
+            </div>
+            <div class="q-carousel__control q-carousel__arrow q-carousel__prev-arrow q-carousel__prev-arrow--horizontal absolute flex flex-center"><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round bg-white text-grey q-btn--actionable q-focusable q-hoverable q-btn--dense" tabindex="0" type="button" regular="true"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i class="q-icon notranslate material-icons" aria-hidden="true" role="img">chevron_left</i></span></button></div>
+            <div class="q-carousel__control q-carousel__arrow q-carousel__next-arrow q-carousel__next-arrow--horizontal absolute flex flex-center"><button class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--round bg-white text-grey q-btn--actionable q-focusable q-hoverable q-btn--dense" tabindex="0" type="button" regular="true"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i class="q-icon notranslate material-icons" aria-hidden="true" role="img">chevron_right</i></span></button></div>
+          </div>
+        </div>
+        <div data-v-be666f43="" class="q-card__section q-card__section--vert col-12 col-sm-5 col-md-6">
+          <p data-v-be666f43="" class="text-h5 q-mb-none cursor-pointer clickable-title two-lines-truncate">Hotel Teste</p>
+          <p data-v-be666f43="" class="text-grey-6">São Paulo, Centro, Rua Exemplo.</p>
+          <div data-v-be666f43="" class="q-ma-none q-mb-sm row items-center q-gutter-x-sm">0 <div data-v-be666f43="" class="q-rating row inline items-center q-rating--non-editable text-yellow" style="font-size: 18px;" role="radiogroup" aria-readonly="true">
+              <div class="q-rating__icon-container flex flex-center" role="radio" aria-checked="false" aria-label="grade 1"><i class="q-icon notranslate material-icons q-rating__icon text-yellow" aria-hidden="true" role="presentation">grade</i></div>
+              <div class="q-rating__icon-container flex flex-center" role="radio" aria-checked="false" aria-label="grade 2"><i class="q-icon notranslate material-icons q-rating__icon text-yellow" aria-hidden="true" role="presentation">grade</i></div>
+              <div class="q-rating__icon-container flex flex-center" role="radio" aria-checked="false" aria-label="grade 3"><i class="q-icon notranslate material-icons q-rating__icon text-yellow" aria-hidden="true" role="presentation">grade</i></div>
+              <div class="q-rating__icon-container flex flex-center" role="radio" aria-checked="false" aria-label="grade 4"><i class="q-icon notranslate material-icons q-rating__icon text-yellow" aria-hidden="true" role="presentation">grade</i></div>
+              <div class="q-rating__icon-container flex flex-center" role="radio" aria-checked="false" aria-label="grade 5"><i class="q-icon notranslate material-icons q-rating__icon text-yellow" aria-hidden="true" role="presentation">grade</i></div>
+            </div>
+            <hr data-v-be666f43="" class="q-separator q-separator--vertical bg-grey" aria-orientation="vertical"><i data-v-be666f43="" class="q-icon notranslate material-icons" style="font-size: 18px;" aria-hidden="true" role="presentation">room_service
+              <!---->
+            </i><i data-v-be666f43="" class="q-icon notranslate material-icons" style="font-size: 18px;" aria-hidden="true" role="presentation">bakery_dining
+              <!---->
+            </i>
+          </div>
+          <div data-v-be666f43="" class="q-chip row inline no-wrap items-center bg-grey text-white q-chip--colored q-chip--square text-weight-medium">
+            <div class="q-chip__content col row no-wrap items-center q-anchor--skip">Reembolsável</div>
+          </div>
+        </div>
+        <div data-v-be666f43="" class="q-card__section q-card__section--vert col-12 col-sm-4 col-md-3 relative-position">
+          <hr data-v-be666f43="" class="q-separator q-separator--vertical bg-grey-3 position-left" style="margin-right: 8px; margin-left: 8px;" aria-orientation="vertical">
+          <p data-v-be666f43="" class="q-mb-xs text-grey-6 text-caption">A partir de:</p>
+          <p data-v-be666f43="" class="q-mb-xs">R$<span data-v-be666f43="" class="text-h5">1.000,00</span></p>
+          <p data-v-be666f43="" class="q-mb-none text-grey-6 text-caption">R$333,33/noite</p>
+          <p data-v-be666f43="" class="text-grey-7 q-mb-xl text-caption">Impostos inclusos</p>
+          <siv data-v-be666f43="" class="row"><button data-v-be666f43="" class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--rounded bg-primary text-white q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase col-12 col-sm-auto" style="font-size: 14px; min-width: 140px;" tabindex="0" type="button"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row">Selecionar</span></button></siv>
+        </div>
+      </div>
+    </div><span data-v-7ea6272d="" class="full-width flex justify-center text-grey-6 empty-feedback q-ma-none">Todos os hotéis foram listados</span>
+    <!--v-if-->
+  </div>
+</div>"
+`;

@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomeView > should render correctly 1`] = `
+"<div data-v-6fbf89c5="" class="overflow-hidden">
+  <div data-v-6fbf89c5="" class="circle-1"></div>
+  <div data-v-6fbf89c5="" class="circle-2"></div>
+  <div data-v-6fbf89c5="" class="circle-3"></div>
+  <div data-v-6fbf89c5="" class="absolute-center full-width q-pa-md flex justify-center">
+    <form data-v-6fbf89c5="" novalidate="" style="width: fit-content;">
+      <div data-v-6fbf89c5="" class="q-card bg-white rounded-borders-xl">
+        <div data-v-6fbf89c5="" class="q-card__section q-card__section--vert q-pa-xl text-center">
+          <h2 data-v-6fbf89c5="" class="text-h3 text-primary text-weight-medium q-ma-none q-mb-lg">Encontre o hotel perfeito para sua viagem</h2>
+          <p data-v-6fbf89c5="" class="text-h6 q-mx-xl text-center q-ma-none q-mb-lg">Procure seu destino e encontre o hotel ideal para sua <span data-v-6fbf89c5="" class="text-primary">estadia</span>, com <span data-v-6fbf89c5="" class="text-primary">conforto</span> e <span data-v-6fbf89c5="" class="text-primary">praticidade</span>. </p>
+          <div data-v-6fbf89c5=""><label data-v-cf369733="" data-v-6fbf89c5="" class="q-field row no-wrap items-start q-field--outlined q-select q-field--auto-height q-select--with-input q-select--without-chips q-select--single q-field--dense place-select" for="static-for">
+              <!---->
+              <div class="q-field__inner relative-position col self-stretch">
+                <div class="q-field__control relative-position row no-wrap" tabindex="-1">
+                  <div class="q-field__control-container col relative-position row no-wrap q-anchor--skip">
+                    <div class="q-field__native row items-center"><input class="q-field__input q-placeholder col" type="search" tabindex="0" role="combobox" aria-readonly="false" aria-autocomplete="list" aria-expanded="false" aria-controls="static-aria-controls" placeholder="Cidade, UF" selected-item-label="selectedLabel" id="static-id" value=""></div>
+                    <!---->
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+                <!---->
+              </div>
+              <!---->
+            </label>
+            <!--v-if-->
+          </div><button data-v-6fbf89c5="" class="q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle q-btn--rounded bg-primary text-white q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase q-mt-lg" style="font-size: 20px; min-width: 160px;" tabindex="0" type="button"><span class="q-focus-helper"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row">Procurar</span></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>"
+`;
