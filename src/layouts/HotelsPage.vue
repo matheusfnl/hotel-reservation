@@ -34,7 +34,7 @@
       </template>
     </PageHeader>
 
-    <div class="row items-center justify-between q-py-md">
+    <div class="row items-center justify-between q-py-md" style="row-gap: 16px">
       <AppBreadcrumb :breadcrumb-items="getBreadcrumb" />
       <SearchResultsOrder v-model="hotelSort" />
     </div>
@@ -78,6 +78,7 @@ import HotelCard from '@/components/hotel/HotelCard.vue'
 import PlaceSelect from '@/components/inputs/PlaceSelect.vue'
 import AppSpinner from '@/components/shared/AppSpinner.vue'
 
+import { Sort } from '@/enums/hotel-sort'
 import { useHotelsStore } from '@/stores/hotels'
 
 const { t } = useI18n()
@@ -86,7 +87,7 @@ const router = useRouter()
 const hotelStore = useHotelsStore()
 
 const nameSearch = ref('')
-const hotelSort = ref('recommended')
+const hotelSort = ref(Sort.RECOMMENDED)
 const placeSearch = ref<Places | null>(null)
 const destinationLabel = ref<BreadcrumbItem | string>('destination.fallback')
 const requestPending = ref(false)
@@ -139,7 +140,7 @@ const handleSearch = async () => {
     query.name = nameSearch.value
   }
 
-  if (hotelSort.value !== 'recommended') {
+  if (hotelSort.value !== Sort.RECOMMENDED) {
     query.sort = hotelSort.value
   }
 
@@ -183,8 +184,8 @@ onMounted(async () => {
     nameSearch.value = route.query.name as string
   }
 
-  if (route.query.sort && ['recommended', 'best_rated'].includes(route.query.sort as string)) {
-    hotelSort.value = route.query.sort as string
+  if (route.query.sort && [Sort.RECOMMENDED, Sort.BEST_RATED].includes(route.query.sort as Sort)) {
+    hotelSort.value = route.query.sort as Sort
   }
 
   await fetchHotels()

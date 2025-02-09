@@ -28,6 +28,8 @@
 </template>
 
 <script lang="ts" setup>
+import { Sort } from '@/enums/hotel-sort'
+
 interface Props {
   modelValue: string
 }
@@ -37,7 +39,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
-const menuOptions = ['recommended', 'best_rated']
+const menuOptions = [Sort.RECOMMENDED, Sort.BEST_RATED]
 
 const selectOption = (option: string) => {
   emit('update:modelValue', option)
