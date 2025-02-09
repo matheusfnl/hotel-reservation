@@ -101,7 +101,7 @@ const getAmenities = computed(() => {
   const quantity = showAllAmenities.value ? hotel.getAmenities.length : 4
   const amenities = hotel.getAmenities
 
-  return amenities.splice(1, quantity)
+  return amenities.splice(0, quantity)
 })
 
 const getAmenitiesText = computed(() => {
