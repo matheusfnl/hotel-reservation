@@ -37,9 +37,12 @@ emitter?.on('drawer-open', ({ component: drawerComponent, props: drawerProps }) 
 
 emitter?.on('drawer-close', () => {
   drawer.value = false
-  component.value = {}
-  props.value = {}
   setOverflow('auto')
+
+  setTimeout(() => {
+    component.value = {}
+    props.value = {}
+  }, 300)
 })
 
 const setOverflow = (value: string) => {

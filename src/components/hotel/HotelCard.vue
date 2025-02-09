@@ -34,7 +34,12 @@
     </q-card-section>
 
     <q-card-section class="col-6">
-      <p class="text-h5 q-mb-none two-lines-truncate">{{ hotel.getName }}</p>
+      <p
+        class="text-h5 q-mb-none cursor-pointer clickable-title two-lines-truncate"
+        @click="showHotelDetails"
+      >
+        {{ hotel.getName }}
+      </p>
       <p class="text-grey-6">{{ hotel.getHotelLocation }}</p>
 
       <div class="q-ma-none q-mb-sm row items-center q-gutter-x-sm">
@@ -181,5 +186,13 @@ onMounted(() => {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.clickable-title {
+  transition: color 0.3s;
+
+  &:hover {
+    color: $primary;
+  }
 }
 </style>

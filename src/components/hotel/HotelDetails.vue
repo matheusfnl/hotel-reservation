@@ -1,9 +1,19 @@
 <template>
   <q-card-section class="q-pb-none">
-    <div class="q-ma-none q-mb-sm row items-center q-gutter-x-sm">
-      {{ rating }}
+    <div class="row justify-between full-width items-center">
+      <div class="q-ma-none q-mb-sm row items-center q-gutter-x-sm">
+        {{ rating }}
 
-      <q-rating v-model="rating" readonly size="18px" :max="5" color="yellow" />
+        <q-rating v-model="rating" readonly size="18px" :max="5" color="yellow" />
+      </div>
+
+      <q-icon
+        v-if="shouldShowCloseButton"
+        @click="closeDrawer"
+        class="cursor-pointer"
+        name="close"
+        size="18px"
+      />
     </div>
 
     <p class="text-h4 q-mb-none two-lines-truncate">{{ hotel.getName }}</p>
@@ -80,9 +90,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useQuasar } from 'quasar'
 
+import type { DrawerPlugin } from '@/types'
 import type { Hotel } from '@/models/Hotel'
 
 import { Amenities } from '@/enums/amenities'
@@ -92,7 +104,9 @@ const { hotel } = defineProps<{
 }>()
 
 const { t } = useI18n()
+const $q = useQuasar()
 
+const drawer = inject('drawer') as DrawerPlugin
 const rating = ref(0)
 const slide = ref(0)
 const showAllAmenities = ref(false)
@@ -110,6 +124,14 @@ const getAmenitiesText = computed(() => {
 
 const toggleFacilities = () => {
   showAllAmenities.value = !showAllAmenities.value
+}
+
+const shouldShowCloseButton = computed(() => {
+  return $q.screen.lt.md
+})
+
+const closeDrawer = () => {
+  drawer.close()
 }
 
 onMounted(() => {
